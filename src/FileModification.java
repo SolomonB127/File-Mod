@@ -22,8 +22,23 @@ public class FileModification {
             writer.write(content);
             writer.close();
             System.out.println("Successfully wrote to file.");
+
+            // Task 2: Creation of file2 with reversed content
+            File secondFile = new File("secondFile.txt");
+            if (secondFile.createNewFile()) {
+                System.out.println("File Created:" + secondFile.getName());
+            } else {
+                System.out.println("File already exist");
+            }
+//            Writing content of file1 to file2(in reverse)
+            writer = new FileWriter(secondFile);
+            writer.write(contentReverse);
+            writer.close();
+            System.out.println("Successfully wrote reversed content to the second file.");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+//            Exception Handling
+            System.out.println("An error occurred.");
+            e.printStackTrace();
         }
     }
 }
