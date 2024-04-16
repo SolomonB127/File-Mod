@@ -1,5 +1,4 @@
 //Importation of utilities.
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,6 +17,11 @@ public class FileModification {
             } else {
                 System.out.println("File already exists.");
             }
+//            Writing content into first file
+            FileWriter writer = new FileWriter(firstFile);
+            writer.write(content);
+            writer.close();
+            System.out.println("Successfully wrote to file.");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
