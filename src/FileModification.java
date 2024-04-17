@@ -1,6 +1,7 @@
 //Importation of utilities.
 
 import java.io.*;
+import java.util.Scanner;
 
 public class FileModification {
     public static void main(String[] args) {
@@ -49,6 +50,17 @@ public class FileModification {
         } catch (IOException e) {
             System.out.println("An error occurred while trying to read file");
             e.printStackTrace();
+        }
+
+//        Task 4: Ask user for input to extract and replace string
+        try (Scanner sc = new Scanner(System.in)) {
+            System.out.println("Where should we start extracting text from? Remember, we start counting from 0!: ");
+            int startPosition = sc.nextInt();
+            System.out.println("How many characters should we take?: ");
+            int len = sc.nextInt();
+            sc.nextLine();//Consumption of trailing newline.
+            System.out.println("Enter the string to replace with: ");
+            String replace = sc.nextLine();
         }
     }
 }
