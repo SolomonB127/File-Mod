@@ -1,6 +1,8 @@
 //Importation of utilities.
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class FileModification {
@@ -39,6 +41,15 @@ public class FileModification {
 //            Exception Handling
             System.out.println("An error occurred.");
             e.printStackTrace();
+        }
+
+//        Copy of first file(for reference)
+        try {
+            Files.copy(Paths.get("firstFile.txt"), Paths.get("firstFileCopy.txt"));
+            System.out.println("Successfully created copy of first file(firstFile.txt)");
+        } catch (IOException error) {
+            System.out.println("Error occurred while making copy of firstFile");
+            error.printStackTrace();
         }
 
 //        Task 3: Displaying content of first file to the console.
