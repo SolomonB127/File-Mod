@@ -69,6 +69,13 @@ public class FileModification {
                     fileRead.append(onLine).append(System.lineSeparator());
                 }
             }
+//            Replacing the specified substring with user input
+            String contenUpdate = fileRead.substring(0, startPosition) + replace + fileRead.substring(startPosition + len);
+//            Write updated content back to firstFile.txt
+            try (FileWriter writer = new FileWriter("firstFile.txt")) {
+                writer.write(contenUpdate);
+                System.out.println("Successfully updated the file content");
+            }
         } catch (IOException err) {
             System.out.println("An error occurred while updating the file.");
             err.printStackTrace();
