@@ -56,11 +56,22 @@ public class FileModification {
         try (Scanner sc = new Scanner(System.in)) {
             System.out.println("Where should we start extracting text from? Remember, we start counting from 0!: ");
             int startPosition = sc.nextInt();
-            System.out.println("How many characters should we take?: ");
+            System.out.println("How many characters should be replaced?: ");
             int len = sc.nextInt();
             sc.nextLine();//Consumption of trailing newline.
             System.out.println("Enter the string to replace with: ");
             String replace = sc.nextLine();
+//            Reading content from firstFile.txt.
+            StringBuilder fileRead = new StringBuilder();
+            try (BufferedReader reader = new BufferedReader(new FileReader("firstFile.txt"))) {
+                String onLine;
+                while ((onLine = reader.readLine()) != null) {
+                    fileRead.append(onLine).append(System.lineSeparator());
+                }
+            }
+        } catch (IOException err) {
+            System.out.println("An error occurred while updating the file.");
+            err.printStackTrace();
         }
     }
 }
