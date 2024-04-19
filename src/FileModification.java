@@ -1,12 +1,11 @@
 //Importation of utilities.
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class FileModification {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 //        Task 1: Creation of file & adding of content.
         String content = "Hello, this is a file handling project given by Aptech.";
 
@@ -41,6 +40,15 @@ public class FileModification {
 //            Exception Handling
             System.out.println("An error occurred.");
             e.printStackTrace();
+        }
+
+        // Compare the content of the first file and the reversed content in the second file
+        String originalContent = Files.readString(Paths.get("firstFile.txt"));
+        String reversedContent = Files.readString(Paths.get("secondFile.txt"));
+        if (originalContent.equals(new StringBuilder(reversedContent).reverse().toString())) {
+            System.out.println("The content of both files match.");
+        } else {
+            System.out.println("The content of both files is different.");
         }
 
 //        Copy of first file(for reference)
