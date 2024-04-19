@@ -1,103 +1,96 @@
-//Importation of utilities.
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Scanner;
 
 public class FileModification {
-    public static void main(String[] args) throws IOException {
-//        Task 1: Creation of file & adding of content.
-        String content = "Hello, this is a file handling project given by Aptech.";
-
-        String contentReverse = new StringBuilder(content).reverse().toString();
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         try {
-//            Creation of first file.
-            File firstFile = new File("firstFile.txt");
-            if (firstFile.createNewFile()) {
-                System.out.println("File Created:" + firstFile.getName());
+            //  Create a file and add content
+            File file1 = new File("firstFile.txt");
+            if (file1.exists()) {
+                System.out.println("The file 'firstFile.txt' already exists.");
             } else {
-                System.out.println("File already exists.");
+                file1.createNewFile();
+                System.out.println("The file 'firstFile.txt' has been created.");
             }
-//            Writing content into first file.
-            FileWriter writer = new FileWriter(firstFile);
-            writer.write(content);
+            FileWriter writer = new FileWriter(file1);
+            writer.write("Hello!, this is an Aptech file handling project.");
             writer.close();
-            System.out.println("Successfully wrote to file.");
+            System.out.println("Content has been added to 'firstFile.txt'.");
 
-            // Task 2: Creation of file2 with reversed content
-            File secondFile = new File("secondFile.txt");
-            if (secondFile.createNewFile()) {
-                System.out.println("File Created:" + secondFile.getName());
+            //  Create a copy of the first file
+            File file1Copy = new File("firstFile_copy.txt");
+            if (!file1Copy.exists()) {
+                file1Copy.createNewFile();
+            }
+            Files.copy(file1.toPath(), file1Copy.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+            //  Create another file with reversed content
+            File file2 = new File("reversed.txt");
+            if (file2.exists()) {
+                System.out.println("The file 'reversed.txt' already exists.");
             } else {
-                System.out.println("File already exist");
+                file2.createNewFile();
+                System.out.println("The file 'reversed.txt' has been created.");
             }
-//            Writing content of file1 to file2(in reverse).
-            writer = new FileWriter(secondFile);
-            writer.write(contentReverse);
+            writer = new FileWriter(file2);
+            BufferedReader reader = new BufferedReader(new FileReader(file1));
+            String content = reader.readLine();
+            String reversedContent = new StringBuilder(content).reverse().toString();
+            writer.write(reversedContent);
             writer.close();
-            System.out.println("Successfully wrote reversed content to the second file.");
+            System.out.println("Reversed content has been added to 'reversed.txt'.");
+
+            //  Compare the contents of the first and second files
+            boolean areContentsEqual = content.equals(new StringBuilder(reversedContent).reverse().toString());
+            System.out.println("Do the first and second files have the same content? " + areContentsEqual);
+
+            //  Display content of the first file
+            System.out.println("First file content: " + content);
+
+            //  Ask user for input to extract string
+            System.out.println("Enter the position to extract the string:");
+            int position = scanner.nextInt();
+            System.out.println("Enter the length of the string to extract:");
+            int length = scanner.nextInt();
+            // Check if the length exceeds the content length
+            if (position + length > content.length()) {
+                System.out.println("The length you entered exceeds the content length. Please try again.");
+                return;
+            }
+            String extractedString = content.substring(position, position + length);
+
+            //  Replace extracted string in a third file
+            File file3 = new File("modified.txt");
+            if (!file3.exists()) {
+                file3.createNewFile();
+            }
+            writer = new FileWriter(file3);
+            System.out.println("Enter the string to replace the extracted string:");
+            scanner.nextLine(); // Consume the remaining newline
+            String replacement = scanner.nextLine();
+            String modifiedContent = content.replace(extractedString, replacement);
+            writer.write(modifiedContent);
+            writer.close();
+
+            // Convert first file data into byte codes
+            File file4 = new File("bytecodes.txt");
+            if (!file4.exists()) {
+                file4.createNewFile();
+            }
+            FileOutputStream outputStream = new FileOutputStream(file4);
+            byte[] byteContent = content.getBytes(StandardCharsets.UTF_8);
+            outputStream.write(byteContent);
+            outputStream.close();
+
+            // Closing resources
+            reader.close();
+            scanner.close();
         } catch (IOException e) {
-//            Exception Handling
-            System.out.println("An error occurred.");
             e.printStackTrace();
-        }
-
-        // Compare the content of the first file and the reversed content in the second file
-        String originalContent = Files.readString(Paths.get("firstFile.txt"));
-        String reversedContent = Files.readString(Paths.get("secondFile.txt"));
-        if (originalContent.equals(new StringBuilder(reversedContent).reverse().toString())) {
-            System.out.println("The content of both files match.");
-        } else {
-            System.out.println("The content of both files is different.");
-        }
-
-//        Copy of first file(for reference)
-        try {
-            Files.copy(Paths.get("firstFile.txt"), Paths.get("firstFileCopy.txt"));
-            System.out.println("Successfully created copy of first file(firstFile.txt)");
-        } catch (IOException error) {
-            System.out.println("Error occurred while making copy of firstFile");
-            error.printStackTrace();
-        }
-
-//        Task 3: Displaying content of first file to the console.
-        try (BufferedReader reader = new BufferedReader(new FileReader("firstFile.txt"))) {
-            String onCurrentLine;
-            while ((onCurrentLine = reader.readLine()) != null) {
-                System.out.println(onCurrentLine);
-            }
-        } catch (IOException e) {
-            System.out.println("An error occurred while trying to read file");
-            e.printStackTrace();
-        }
-
-//        Task 4: Ask user for input to extract and replace string
-        try (Scanner sc = new Scanner(System.in)) {
-            System.out.println("Where should we start extracting text from? Remember, we start counting from 0!: ");
-            int startPosition = sc.nextInt();
-            System.out.println("How many characters should be replaced?: ");
-            int len = sc.nextInt();
-            sc.nextLine();//Consumption of trailing newline.
-            System.out.println("Enter the string to replace with: ");
-            String replace = sc.nextLine();
-//            Reading content from firstFile.txt.
-            StringBuilder fileRead = new StringBuilder();
-            try (BufferedReader reader = new BufferedReader(new FileReader("firstFile.txt"))) {
-                String onLine;
-                while ((onLine = reader.readLine()) != null) {
-                    fileRead.append(onLine).append(System.lineSeparator());
-                }
-            }
-//            Replacing the specified substring with user input
-            String contenUpdate = fileRead.substring(0, startPosition) + replace + fileRead.substring(startPosition + len);
-//            Write updated content back to firstFile.txt
-            try (FileWriter writer = new FileWriter("firstFile.txt")) {
-                writer.write(contenUpdate);
-                System.out.println("Successfully updated the file content");
-            }
-        } catch (IOException err) {
-            System.out.println("An error occurred while updating the file.");
-            err.printStackTrace();
         }
     }
 }
