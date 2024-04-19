@@ -52,7 +52,7 @@ public class FileModification {
             System.out.println("First file content: " + content);
 
             //  Ask user for input to extract string
-            System.out.println("Enter the position to extract the string:");
+            System.out.println("Enter the position to extract the string! Remember we start counting from 0.:");
             int position = scanner.nextInt();
             System.out.println("Enter the length of the string to extract:");
             int length = scanner.nextInt();
