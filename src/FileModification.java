@@ -1,3 +1,4 @@
+//Importation of utilities
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -8,7 +9,7 @@ public class FileModification {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         try {
-            //  Create a file and add content
+            //  File creation & addition of data.
             File file1 = new File("firstFile.txt");
             if (file1.exists()) {
                 System.out.println("The file 'firstFile.txt' already exists.");
@@ -21,14 +22,14 @@ public class FileModification {
             writer.close();
             System.out.println("Content has been added to 'firstFile.txt'.");
 
-            //  Create a copy of the first file
+            //  Create a copy of the first file(for reference).
             File file1Copy = new File("firstFile_copy.txt");
             if (!file1Copy.exists()) {
                 file1Copy.createNewFile();
             }
             Files.copy(file1.toPath(), file1Copy.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
-            //  Create another file with reversed content
+            //  Create another file with reversed content of first file.
             File file2 = new File("reversed.txt");
             if (file2.exists()) {
                 System.out.println("The file 'reversed.txt' already exists.");
@@ -44,14 +45,14 @@ public class FileModification {
             writer.close();
             System.out.println("Reversed content has been added to 'reversed.txt'.");
 
-            //  Compare the contents of the first and second files
+            //  Compare the contents of the first and second files to see if they match.
             boolean areContentsEqual = content.equals(new StringBuilder(reversedContent).reverse().toString());
             System.out.println("Do the first and second files have the same content? " + areContentsEqual);
 
-            //  Display content of the first file
+            //  Display content of the first file.
             System.out.println("First file content: " + content);
 
-            //  Ask user for input to extract string
+            //  Ask user for input to extract string.
             System.out.println("Enter the position to extract the string! Remember we start counting from 0.:");
             int position = scanner.nextInt();
             System.out.println("Enter the length of the string to extract:");
