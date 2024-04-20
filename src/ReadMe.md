@@ -73,21 +73,25 @@ handling techniques.
 
 ## Project Design
 
-The project design includes **DFD's (Data Flow
-Diagrams): ![diagram-export-20-04-2024-14_11_03.png](..%2F..%2F..%2F..%2F..%2F..%2FDownloads%2Fdiagram-export-20-04-2024-14_11_03.png)
-**, *
-*Flowcharts: ![diagram-export-20-04-2024-14_14_43.png](..%2F..%2F..%2F..%2F..%2F..%2FDownloads%2Fdiagram-export-20-04-2024-14_14_43.png)
-**, and **Process
-Diagram: ![diagram-export-20-04-2024-14_17_10.png](..%2F..%2F..%2F..%2F..%2F..%2FDownloads%2Fdiagram-export-20-04-2024-14_17_10.png)
+The project design includes:
+
+- **DFD's (Data Flow
+  Diagrams)
+  **: ![diagram-export-20-04-2024-14_11_03.png](..%2F..%2F..%2F..%2F..%2F..%2FDownloads%2Fdiagram-export-20-04-2024-14_11_03.png)
+  ,
+- **Flowcharts
+  **: ![diagram-export-20-04-2024-14_14_43.png](..%2F..%2F..%2F..%2F..%2F..%2FDownloads%2Fdiagram-export-20-04-2024-14_14_43.png)
+  , and
+- **Process
+  Diagram
+  **: ![diagram-export-20-04-2024-14_17_10.png](..%2F..%2F..%2F..%2F..%2F..%2FDownloads%2Fdiagram-export-20-04-2024-14_17_10.png)
 ** that visually represent the project's workflow. These diagrams provide a clear understanding of the project's
 structure and the interconnections between its various components.
 
 ## Database Structure
-
 The project does not involve the use of a database. Therefore, this section is not applicable.
 
 ## Screen Shots
-
 Screenshots of the application's interface to illustrate its functionality:
 ![Screenshot (158).png](..%2F..%2F..%2F..%2F..%2F..%2FPictures%2FScreenshots%2FScreenshot%20%28158%29.png)
 ![Screenshot (155).png](..%2F..%2F..%2F..%2F..%2F..%2FPictures%2FScreenshots%2FScreenshot%20%28155%29.png)
@@ -95,7 +99,6 @@ Screenshots of the application's interface to illustrate its functionality:
 ![Screenshot (157).png](..%2F..%2F..%2F..%2F..%2F..%2FPictures%2FScreenshots%2FScreenshot%20%28157%29.png)
 
 ## Source Codes with Comments
-
 The source code of the project is provided below with detailed comments explaining each segment:
 
 ```java
@@ -200,10 +203,8 @@ public class FileModification {
 ```
 
 ## User Guide
-
 This section provides detailed instructions on how to use the File Modification Application to perform various file
 operations:
-
 - **File Creation and Data Addition**: Upon running the app, it creates a text file named "firstFile.txt" if it does not
   already exist. It then adds the specified content to the file.
 - **Content Reversal**: The app creates a copy of the first file and then generates another file named "reversed.txt"
@@ -215,10 +216,8 @@ operations:
   modified.txt".
 
 ## Developers Guide-Module Description
-
 This section provides insights into the implementation details of the File Modification Application, guiding developers
-on how to understand and extend its functionality.
-
+on how to understand and extend its functionality:
 - **Overview**: The app is implemented in Java and utilizes file handling and string manipulation techniques to perform
   various operations on text files.
 - **File Handling**: It employs classes from the java.io and java.nio.file packages to create, read, write, and copy
@@ -229,20 +228,17 @@ on how to understand and extend its functionality.
   operations, ensuring a smooth user experience.
 
 ## Final Check List
-
 - [x] Code compiles without errors.
 - [x] All functionalities have been implemented as per the problem statement.
 - [x] Code has been reviewed and optimized.
 - [x] Documentation is complete and accurate.
 
 ## Conclusion
-
 The File Modification Application provides a convenient way to perform various file operations in Java. Whether you're a
 user looking to manipulate text files or a developer seeking to extend the app's functionality, this guide equips you
 with the necessary knowledge to effectively utilize and understand the application.
 
 ## *Developers Information*:
-
 - **_Developed By_**: *Akinsulire Solomon Olabode, Chukwujekwu Chimaobi Micheal & Ajayi Akinloluwa*.
 - **_GitHub Repository_**: *https://github.com/SolomonB127/File-Mod.git*
 - **_Start Date_**: 15th, April 2024.
