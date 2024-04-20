@@ -77,10 +77,8 @@ The project design includes:
 
 - **DFD's (Data Flow Diagrams)
   **: ![diagram-export-20-04-2024-14_11_03.png](..%2F..%2F..%2F..%2F..%2F..%2FDownloads%2Fdiagram-export-20-04-2024-14_11_03.png)
-  ,
 - **Flowcharts
   **: ![diagram-export-20-04-2024-14_14_43.png](..%2F..%2F..%2F..%2F..%2F..%2FDownloads%2Fdiagram-export-20-04-2024-14_14_43.png)
-  , and
 - **Process Diagram
   **: ![diagram-export-20-04-2024-14_17_10.png](..%2F..%2F..%2F..%2F..%2F..%2FDownloads%2Fdiagram-export-20-04-2024-14_17_10.png)
   that visually represent the project's workflow. These diagrams provide a clear understanding of the project's
